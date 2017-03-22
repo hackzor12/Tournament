@@ -20,9 +20,8 @@ name varchar(20)
 --Create a table called Matches with an auto incrementing id, an int field winner, and and int field loser
 CREATE TABLE Matches(
 id serial PRIMARY KEY,
-winner int,
-loser int,
-);
+winner int REFERENCES Players (id),
+loser int REFERENCES Players (id));
 
 --Create a view called Standings so we can do operations on it later
 CREATE VIEW Standings AS
