@@ -75,6 +75,8 @@ def playerStandings():
 def reportMatch(winner, loser):
     db = connect()
     cursor= db.cursor()
+    winner = bleach.clean(winner, strip=True)
+    loser = bleach.clean(loser, strip=True)
     cursor.execute("INSERT INTO Matches (winner,loser) VALUES(%s,%s)" ,
         (winner,loser))
     db.commit()
